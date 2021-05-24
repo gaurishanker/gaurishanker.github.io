@@ -12,8 +12,10 @@ mixpanel.init("4991813710c159f6ee3a41e75732751a", {batch_requests: true})</scrip
     <title>Testing</title>
     <!-- Start VWO Async SmartCode -->
     <script type='text/javascript'>
+    var curr_account_id = location.search.split('id=')[1] ? location.search.split('id=')[1] : '366636';
+
       window._vwo_code = window._vwo_code || (function(){
-      var account_id=8000115,
+      var account_id=curr_account_id,
       settings_tolerance=2000,
       library_tolerance=2500,
       use_existing_jquery=false,
