@@ -33,6 +33,40 @@ window.settings_timer=setTimeout(function () {_vwo_code.finish() },settings_tole
         a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
         })();
 </script>
-    
+<script>
+(function() {
+  var tealiumInterval;
+  var analyticsTimerObj = {
+      tealium: "",
+    };
+  clearTimeout(tealiumInterval);
+  tealiumInterval = setTimeout(function waitForAnalyticsVariables() {
+    // eslint-disable-next-line computed-property-spacing
+    if (window.utag_data) {
+      clearInterval(analyticsTimerObj[namespace]);
+      if (!window.tealium) {
+        window.tealium = true;
+        var script = document.createElement('script');
+        window.vwo_tealium_enrich = function(e) {
+            window.vwo_tealium_data = e
+        };
+        script.src = `https://visitor-service.tealiumiq.com/${utag_data.tealium_account}/${utag_data.tealium_profile}/${utag_data.tealium_visitor_id}?callback=vwo_tealium_enrich`;
+        script.onerror = function() {
+          console.log('VWO: Error Ocuured while fetching the Tealium data');
+        };
+        script.onload = function() {
+        };
+        document.getElementsByTagName('head')[0].appendChild(script);
+        return true;
+      }  
+    } else if (!analyticsTimerObj[namespace]) {
+      analyticsTimerObj[namespace] = setInterval(function () {
+        waitForAnalyticsVariables();
+      }, 100);
+    }
+  }, 100);
+  
+})();
+</script>    
     
 <p> Testing </p>
