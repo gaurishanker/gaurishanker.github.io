@@ -33,7 +33,8 @@ window.settings_timer=setTimeout(function () {_vwo_code.finish() },settings_tole
   clearTimeout(tealiumInterval);
   tealiumInterval = setTimeout(function waitForAnalyticsVariables() {
     // eslint-disable-next-line computed-property-spacing
-    if (window.utag_data && window.utag_data.tealium_visitor_id) {
+    if (window.utag && window.utag.data) {
+      var utag_data = window.utag.data;
       clearInterval(analyticsTimerObj[namespace]);
       if (!window.tealium) {
         window.tealium = true;
