@@ -15,23 +15,13 @@ window.settings_timer=setTimeout(function () {_vwo_code.finish() },settings_tole
 </script>
 <!-- End VWO Async SmartCode -->
 
+<!-- Loading script asynchronously -->
 <script type="text/javascript">
-    var utag_data = {
-	page_name : "home_page",
-  	page_section : "main",
-  	page_category : "test",
-  	page_subcategory : "tealium",
-  	page_type : "prod"
-    }
-    </script>
-    
-    <!-- Loading script asynchronously -->
-    <script type="text/javascript">
-        (function(a,b,c,d){
-        a='https://tags.tiqcdn.com/utag/vwo-sandbox/eshan.jain/prod/utag.js';
-        b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
-        a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
-        })();
+    (function(a,b,c,d){
+    a='https://tags.tiqcdn.com/utag/vwo-sandbox/main/prod/utag.js';
+    b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
+    a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
+    })();
 </script>
 <script>
 (function() {
@@ -43,7 +33,7 @@ window.settings_timer=setTimeout(function () {_vwo_code.finish() },settings_tole
   clearTimeout(tealiumInterval);
   tealiumInterval = setTimeout(function waitForAnalyticsVariables() {
     // eslint-disable-next-line computed-property-spacing
-    if (window.utag_data) {
+    if (window.utag_data && window.utag_data.tealium_visitor_id) {
       clearInterval(analyticsTimerObj[namespace]);
       if (!window.tealium) {
         window.tealium = true;
