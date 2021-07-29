@@ -29,15 +29,18 @@ window.settings_timer=setTimeout(function () {_vwo_code.finish() },settings_tole
       var clearbitInterval;
       var pollInterval = 100;
       var clearbitTimerObj = "";
-      var accountIntegrationSettings = {};
+      var accountIntegrationSettings = {
+        clearbitCompanyAttributeVariable: window.reveal_organization_new,
+      };
       clearTimeout(clearbitInterval);
+
       clearbitInterval = setTimeout(function waitForAnalyticsVariables() {
+
         console.log("--------", window.reveal_organization);
         clearTimeout(clearbitInterval);
         if (accountIntegrationSettings["clearbitCompanyAttributeVariable"]) {
           clearInterval(clearbitTimerObj);
-          window.reveal_organization =
-            accountIntegrationSettings["clearbitCompanyAttributeVariable"];
+          window.reveal_organization = accountIntegrationSettings["clearbitCompanyAttributeVariable"];
         } else {
           accountIntegrationSettings = {
             clearbitCompanyAttributeVariable: window.reveal_organization_new,
@@ -45,7 +48,7 @@ window.settings_timer=setTimeout(function () {_vwo_code.finish() },settings_tole
           console.log("retrying ---- ", {
             clearbitCompanyAttributeVariable: window.reveal_organization_new,
           });
-          console.log(window.reveal_organisation_new)
+          console.log(window.reveal_organization_new)
           clearbitTimerObj = setInterval(function () {
             waitForAnalyticsVariables();
           }, pollInterval);
