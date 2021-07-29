@@ -38,8 +38,8 @@ window.settings_timer=setTimeout(function () {_vwo_code.finish() },settings_tole
 
         console.log("--------", window.reveal_organization);
         clearTimeout(window.clearbitInterval);
+        clearInterval(window.clearbitTimerObj);
         if (accountIntegrationSettings["clearbitCompanyAttributeVariable"]) {
-          clearInterval(window.clearbitTimerObj);
           window.reveal_organization = accountIntegrationSettings["clearbitCompanyAttributeVariable"];
         } else {
           accountIntegrationSettings = {
